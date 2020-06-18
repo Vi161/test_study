@@ -1,26 +1,6 @@
 /node_modules
-/public/hot
-/public/storage
-/storage/*.key
-/vendor
-.env
-.env.backup
-.phpunit.result.cache
-Homestead.json
-Homestead.yaml
 npm-debug.log
-yarn-error.log
 .idea
 composer.lock
 package-lock.json
 
-public/css/custom.css
-public/css/style.css
-public/js/charge.js
-public/js/error.js
-public/js/main.js
-public/js/popup_address.js
-public/js/low_connection.js
-public/js/app.js
-
-public/mix-manifest.json
