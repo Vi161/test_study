@@ -1,23 +1,40 @@
 {
-  "name": "study1",
+  "name": "study-vue-cli",
+  "description": "A Vue.js project",
   "version": "1.0.0",
-  "description": "",
-  "main": "src/index.js",
+  "author": "Vladimir Panov <v.panov@newizze.com>",
+  "license": "MIT",
+  "private": true,
   "scripts": {
-    "dev": "webpack --mode development",
-    "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "build": "webpack --mode production",
-    "watch": "npm run development -- --watch"
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
+    "watch": "npm run dev -- --watch"
   },
-  "author": "",
-  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "bootstrap": "^4.5.0",
+    "bootstrap-vue": "^2.15.0",
+    "vue": "^2.5.11"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ],
   "devDependencies": {
-    "css-loader": "^3.5.3",
-    "file-loader": "^6.0.0",
-    "sass": "^1.26.7",
-    "sass-loader": "^8.0.2",
-    "style-loader": "^1.2.1",
-    "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.11"
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-stage-3": "^6.24.1",
+    "cross-env": "^5.0.5",
+    "css-loader": "^0.28.7",
+    "dotenv-webpack": "^1.8.0",
+    "file-loader": "^1.1.4",
+    "node-sass": "^4.5.3",
+    "sass-loader": "^6.0.6",
+    "vue-loader": "^13.0.5",
+    "vue-template-compiler": "^2.4.4",
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.9.1"
   }
 }
