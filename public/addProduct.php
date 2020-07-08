@@ -12,13 +12,13 @@ if ($link == false){
 $data = file_get_contents('php://input');
 $_POST = json_decode($data, true);
 
-
 function addProduct($name, $price, $link)
 {
   $sql = sprintf("INSERT INTO products (name, price) VALUES ('%s', '%s')", $name, $price);
   $result = mysqli_query($link, $sql);
+  $last_id = mysqli_insert_id($link);
   if ($result) {
-    echo 'Добавлен продукт '.$name;
+    echo(json_encode(['id' => $last_id,'name' => $name, 'price' => $price]));
   }
 }
 

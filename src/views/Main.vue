@@ -44,6 +44,8 @@
             >
               {{el.name}}
             </a>
+            <p>{{el.price}} $</p>
+
           </li>
         </ul>
       </div>
@@ -66,11 +68,13 @@
       }
     },
     mounted() {
-      this.path = process.env.VUE_APP_URL
+      this.path = process.env.VUE_APP_URL;
+      this.getProducts();
     },
     computed: {
       filteredProducts(){
-        if (this.products) {
+        if (this.products.length>0) {
+          console.log('this.products',this.products)
           return this.products.filter(prod => {
             return prod.name.toLowerCase().includes(this.search.toLowerCase())
           });
@@ -79,17 +83,17 @@
     },
     methods: {
       getProducts() {
-        window.axios.get(`../../resources/films.json`,)
+        window.axios.get(`http://${this.path}/getProduct.php`,)
         .then((response) => {
-          this.products = (Object.values(response.data))
+          this.products = response.data;
         }).catch(e => {
           console.log('err', e.response);
         })
       },
       addProduct() {
-        window.axios.post(`http://${this.path}/getDB.php`, {name: this.productName, price: this.price} )
+        window.axios.post(`http://${this.path}/addProduct.php`, {name: this.productName, price: this.price} )
         .then((response) => {
-          console.log(response.data)
+          this.products.push({...response.data})
         }).catch(e => {
           console.log('err', e.response);
         })
