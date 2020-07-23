@@ -39,13 +39,16 @@
               v-for="(el, i) in filteredProducts"
               :key="i"
           >
-            <a href="javascript:void(0)"
-               class="w-100 h-100 d-flex justify-content-center align-items-center"
-            >
+            <h5 class="w-100 h-100 d-flex justify-content-center align-items-center text-center">
               {{el.name}}
-            </a>
+            </h5>
             <p>{{el.price}} $</p>
-
+            <a href="javascript:void(0)"
+               class="text-danger"
+               @click="delProduct(el.id)"
+            >
+              remove
+            </a>
           </li>
         </ul>
       </div>
@@ -94,6 +97,17 @@
         window.axios.post(`http://${this.path}/addProduct.php`, {name: this.productName, price: this.price} )
         .then((response) => {
           this.products.push({...response.data})
+        }).catch(e => {
+          console.log('err', e.response);
+        })
+      },
+      delProduct(id) {
+        window.axios.post(`http://${this.path}/delProduct.php`, {id: id} )
+        .then((response) => {
+          let newArr = this.products.filter(el => {
+            return el.id !== id
+          })
+          this.products = newArr;
         }).catch(e => {
           console.log('err', e.response);
         })
